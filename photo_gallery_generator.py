@@ -1,11 +1,13 @@
 import argparse
-import os
-from jinja2 import Template
 import logging
-from photo_compressor import PhotoCompressor
 import os
 import shutil
 import sys
+
+from jinja2 import Template
+
+from photo_compressor import PhotoCompressor
+
 logger = logging.getLogger(__name__)
 
 
@@ -22,8 +24,8 @@ class PhotoGalleryGenerator:
         )
 
     def generate(self):
-        self.raw_photos()
-        self.compressed_photos()
+        # self.raw_photos()
+        # self.compressed_photos()
         self.html()
         self.stylesheet()
         self.javascript()

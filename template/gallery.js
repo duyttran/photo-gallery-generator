@@ -43,7 +43,7 @@ function nextImageSrc(src) {
 }
 
 function showDarkbox(url) {
-    console.log("darkbox url " + url)
+    console.log("darkbox url " + url);
     if(!darkBoxVisible) {
         let y = window.scrollY + 50;
 
@@ -64,13 +64,13 @@ function showDarkbox(url) {
         document.addEventListener('keydown', (event) => {
             let element = document.getElementById("darkboximg");
             if (event.key == "ArrowRight") {
-                console.log(element.src)
-                element.src = nextImageSrc(element.src)
-                console.log(element.src)
+                console.log("before arrow right " + element.src);
+                element.src = nextImageSrc(element.src);
+                console.log("after arrow right " + element.src);
             } else if (event.key =="ArrowLeft") {
-                console.log(element.src)
-                element.src = prevImageSrc(element.src)
-                console.log(element.src)
+                console.log("before arrow left " + element.src);
+                element.src = prevImageSrc(element.src);
+                console.log("after arrow left " + element.src);
             }
         });
 

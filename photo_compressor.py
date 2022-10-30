@@ -1,9 +1,10 @@
 import argparse
-import os
-from PIL import Image
 import logging
-
+import os
 import sys
+
+from PIL import Image
+
 logger = logging.getLogger(__name__)
 
 class PhotoCompressor:
@@ -49,5 +50,3 @@ if __name__ == "__main__":
 
     compressor = PhotoCompressor(args.src, args.dest, args.compress_factor)
     compressor.compress_photos()
-
-
