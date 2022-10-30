@@ -1,0 +1,41 @@
+/*
+3 columns fixed. and used some tips from here to get left to right wrapping on columns
+https://stackoverflow.com/questions/30912667/how-to-display-list-items-as-columns-preserving-the-left-to-right-order
+
+darkbox is set here but the positioning on scroll screen happens dynamically in javascript
+*/
+#darkbox {
+    margin:auto;
+    left: 5%;
+    width:90%;
+    height:90%;
+    position:absolute;
+    background-color:#333; overflow: hidden; text-align:center;
+}
+.darkboximg { padding:5%; width: auto; height: 85%; }
+
+.gallery {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.gallery img {
+    width: 50%;
+    height: auto;
+    outline: 5px solid white;
+}
+
+.gallery img {
+    width: 33%;
+}
+.gallery >:nth-child(2n- 1) {
+    order: 1;
+}
+
+.gallery >:nth-child(3n) {
+    order: 2;
+}
+
+.gallery >:nth-child(-n + 3) {
+    break-before: always;
+}
