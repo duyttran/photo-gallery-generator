@@ -16,6 +16,7 @@ class PhotoCompressor:
 
     def compress_photos(self):
         paths = os.listdir(self.src)
+        paths.sort()
         for path in paths:
             logger.info(f"Compressing photo {path}")
             src_path = f"{self.src}/{path}"

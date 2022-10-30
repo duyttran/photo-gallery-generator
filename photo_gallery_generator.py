@@ -22,8 +22,8 @@ class PhotoGalleryGenerator:
         )
 
     def generate(self):
-        # self.raw_photos()
-        # self.compressed_photos()
+        self.raw_photos()
+        self.compressed_photos()
         self.html()
         self.stylesheet()
         self.javascript()
