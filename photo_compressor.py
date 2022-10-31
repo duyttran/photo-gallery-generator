@@ -5,7 +5,10 @@ import sys
 
 from PIL import Image
 
+import utils
+
 logger = logging.getLogger(__name__)
+
 
 class PhotoCompressor:
     def __init__(self, src: str, dest: str, compress_factor: float):
@@ -18,15 +21,17 @@ class PhotoCompressor:
     def compress_photos(self):
         paths = os.listdir(self.src)
         paths.sort()
+        idx = 1
         for path in paths:
             logger.info(f"Compressing photo {path}")
             src_path = f"{self.src}/{path}"
-            dest_path = f"{self.dest}/{path}"
+            dest_path = f"{self.dest}/{utils.zero_pad(idx)}.jpg"
             image = Image.open(src_path)
             new_width = int(image.size[0] * self.compress_factor)
             new_height = int(image.size[1] * self.compress_factor)
             compressed_image = image.resize((new_width, new_height))
             compressed_image.save(dest_path)
+            idx += 1
 
 
 if __name__ == "__main__":

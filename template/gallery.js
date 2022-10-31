@@ -4,7 +4,8 @@ This js manages different supported gallery actions
  - left arrow to go to prev full size image
  - right arrow to go to next full size image
 
-Some tips were taken from https://timnwells.medium.com/enhancing-our-simple-responsive-image-gallery-746549cd2f11
+Some tips were taken from
+https://timnwells.medium.com/enhancing-our-simple-responsive-image-gallery-746549cd2f11
 */
 let darkBoxVisible = false;
 
@@ -33,6 +34,9 @@ function zeroPadNum(num) {
 function prevImageSrc(src) {
     strNum = src.substring(src.length - 7, src.length - 4);
     prevNum = parseInt(strNum) - 1;
+    if (prevNum <= 0) {
+        prevNum = 1
+    }
     return src.substring(0, src.length - 7) + zeroPadNum(prevNum) + src.substring(src.length - 4, src.length);
 }
 

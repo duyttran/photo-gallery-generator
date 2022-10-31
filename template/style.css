@@ -25,6 +25,7 @@ darkbox is set here but the positioning on scroll screen happens dynamically in 
 .gallery {
     display: flex;
     flex-flow: column wrap;
+    column-count: 3;
 }
 
 .gallery img {
@@ -33,7 +34,7 @@ darkbox is set here but the positioning on scroll screen happens dynamically in 
     outline: 5px solid white;
 }
 
-.gallery >:nth-child(2n- 1) {
+.gallery >:nth-child(3n - 1) {
     order: 1;
 }
 
@@ -42,6 +43,5 @@ darkbox is set here but the positioning on scroll screen happens dynamically in 
 }
 
 .gallery >:nth-child(-n + 3) {
-    break-before: always;
-    page-break-before: always;
+    break-before: page;
 }

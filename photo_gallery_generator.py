@@ -6,6 +6,7 @@ import sys
 
 from jinja2 import Template
 
+import utils
 from photo_compressor import PhotoCompressor
 
 logger = logging.getLogger(__name__)
@@ -24,8 +25,8 @@ class PhotoGalleryGenerator:
         )
 
     def generate(self):
-        # self.raw_photos()
-        # self.compressed_photos()
+        self.raw_photos()
+        self.compressed_photos()
         self.html()
         self.stylesheet()
         self.javascript()
@@ -38,8 +39,9 @@ class PhotoGalleryGenerator:
         images.sort()
 
         photos_str = ""
-        for image in images:
-            photos_str += f'            <img src="compressed_photos/{image}">\n'
+        for idx in range(1, len(images) + 1):
+            photos_str += f'            <img src="compressed_photos/{utils.zero_pad(idx)}.jpg">\n'
+            idx += 1
 
         with open(f"template/index.html", "r") as f:
             template = Template(f.read())
@@ -67,8 +69,11 @@ class PhotoGalleryGenerator:
         logger.info(f"Copying raw photos to {self.raw_photos_dir}")
         files = os.listdir(self.src_photos_dir)
         self._make_folder_if_not_exists(self.raw_photos_dir)
+
+        idx = 1
         for file in files:
-            shutil.copy(f"{self.src_photos_dir}/{file}", f"{self.raw_photos_dir}/{file}")
+            shutil.copy(f"{self.src_photos_dir}/{file}", f"{self.raw_photos_dir}/{utils.zero_pad(idx)}.jpg")
+            idx += 1
 
     def compressed_photos(self):
         logger.info(f"Creating compressed photos to {self.compressed_photos_dir}")
