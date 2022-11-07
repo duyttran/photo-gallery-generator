@@ -23,25 +23,17 @@ darkbox is set here but the positioning on scroll screen happens dynamically in 
 }
 
 .gallery {
-    display: flex;
-    flex-flow: column wrap;
-    column-count: 3;
+    line-height:0;
+    -webkit-column-count:3;
+    -webkit-column-gap:5px;
+    -moz-column-count:3;
+    -moz-column-gap:5px;
+    column-count:3;
+    column-gap:5px;
 }
 
 .gallery img {
-    width: 33%;
+    width: 100%;
     height: auto;
     outline: 5px solid white;
-}
-
-.gallery >:nth-child(3n - 1) {
-    order: 1;
-}
-
-.gallery >:nth-child(3n) {
-    order: 2;
-}
-
-.gallery >:nth-child(-n + 3) {
-    break-before: page;
 }
